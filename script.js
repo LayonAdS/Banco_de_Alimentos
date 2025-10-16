@@ -7,4 +7,11 @@ function mostrarAba(aba) {
     if (aba === 'doacoes') carregarDoacoes();
     if (aba === 'home') atualizarPainel();
   }
-  
+  async function cadastrar(form, url) {
+    const formData = new FormData(form);
+    const resposta = await fetch(url, { method: 'POST', body: formData });
+    const texto = await resposta.text();
+    alert(texto);
+    form.reset();
+    atualizarPainel();
+  }
